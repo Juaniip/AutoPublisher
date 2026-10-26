@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Datos y secretos (base SQLite con tokens, usuario y ajustes)
+data/
+*.db
+*.db-shm
+*.db-wal
+.env
+client_secret*.json
+agentes/config.json
+
+# Videos y contenido generado
+publicar/
+publicados/
+generados/
+guiones/
+agentes/personaje/
+
+# Material personal del formulario de auditoría (capturas con tu cuenta)
+pruebas-formulario/

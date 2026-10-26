@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPublisher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">▶</div>
+        <div>
+          <div class="brand-name">AutoPublisher</div>
+          <div class="brand-sub">YouTube en piloto automático</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#inicio" data-view="inicio">🏠 Inicio</a>
+        <a href="#videos" data-view="videos">🎬 Videos</a>
+        <a href="#calendario" data-view="calendario">📅 Calendario</a>
+        <a href="#guiones" data-view="guiones">📝 Guiones</a>
+        <a href="#cuentas" data-view="cuentas">👤 Cuentas</a>
+        <a href="#ajustes" data-view="ajustes">⚙️ Ajustes</a>
+      </nav>
+      <div class="sidebar-footer" id="scheduler-status"></div>
+      <div class="user-box hidden" id="user-box"></div>
+    </aside>
+
+    <main class="main">
+      <!-- INICIO -->
+      <section class="view hidden" id="view-inicio">
+        <div class="home-hero">
+          <div class="home-hello">
+            <div class="home-kicker" id="home-greeting">¡Hola! 👋</div>
+            <h1>¿Qué publicamos hoy?</h1>
+            <p class="muted">Subí tus videos, cargales un guion y AutoPublisher se encarga de programarlos, publicarlos y guardarlos en Drive.</p>
+          </div>
+          <label class="home-drop" id="home-drop">
+            <input type="file" id="home-upload" accept="video/*,.mkv,.mov" multiple hidden />
+            <div class="home-drop-icon">⬆</div>
+            <div class="home-drop-title">Subir videos</div>
+            <div class="home-drop-sub">Arrastralos acá o tocá para elegirlos</div>
+          </label>
+        </div>
+        <div id="home-alerts"></div>
+        <div class="home-stats" id="home-stats"></div>
+        <div class="home-cards" id="home-cards"></div>
+        <div class="home-next panel" id="home-next"></div>
+      </section>
+
+      <!-- VIDEOS -->
+      <section class="view" id="view-videos">
+        <header class="view-header">
+          <div>
+            <h1>Videos</h1>
+            <p class="muted" id="watch-dir-label"></p>
+          </div>
+          <div class="header-actions">
+            <button class="btn ghost" id="btn-rescan">↻ Reescanear carpeta</button>
+            <label class="btn primary">⬆ Subir videos<input type="file" id="upload-input" accept="video/*,.mkv,.mov" multiple hidden /></label>
+          </div>
+        </header>
+
+        <div id="setup-banner"></div>
+
+        <div class="tabs" id="status-tabs"></div>
+
+        <div class="toolbar">
+          <label class="check"><input type="checkbox" id="select-all" /> Seleccionar todo</label>
+          <input class="input search" id="search" placeholder="Buscar por título o archivo…" />
+        </div>
+
+        <div class="grid" id="video-grid"></div>
+
+        <div class="bulkbar hidden" id="bulkbar">
+          <span id="bulk-count"></span>
+          <div class="bulk-actions" id="bulk-actions"></div>
+        </div>
+      </section>
+
+      <!-- CALENDARIO (lee YouTube) -->
+      <section class="view hidden" id="view-calendario">
+        <header class="view-header">
+          <div>
+            <h1>Calendario</h1>
+            <p class="muted" id="ytcal-sub">Lo que está en tus canales de YouTube: publicado y programado.</p>
+          </div>
+          <div class="header-actions">
+            <select class="input" id="ytcal-channel" style="width:auto"></select>
+            <button class="btn" id="ytcal-refresh">↻ Actualizar</button>
+          </div>
+        </header>
+        <div id="ytcal"></div>
+      </section>
+
+      <!-- GUIONES -->
+      <section class="view hidden" id="view-guiones">
+        <header class="view-header">
+          <div>
+            <h1>Guiones</h1>
+            <p class="muted" id="guiones-sub">Prompts para Gemini con su título, descripción, etiquetas y hashtags.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn" id="btn-brief">⚙️ Plantilla</button>
+            <button class="btn primary" id="btn-gen-guiones">✨ Generar guiones</button>
+          </div>
+        </header>
+        <div id="guiones-progress"></div>
+        <div class="cat-bar" id="guion-cats"></div>
+        <div class="tabs" id="guion-tabs"></div>
+        <div id="guiones-list" class="guion-list"></div>
+      </section>
+
+      <!-- CUENTAS -->
+      <section class="view hidden" id="view-cuentas">
+        <header class="view-header">
+          <div>
+            <h1>Cuentas de YouTube</h1>
+            <p class="muted">Conectá uno o varios canales. Cada video se publica en el canal que le asignes.</p>
+          </div>
+          <a class="btn primary" href="/auth/google" id="btn-connect">+ Conectar canal</a>
+        </header>
+        <div id="accounts-list" class="cards"></div>
+      </section>
+
+      <!-- AJUSTES -->
+      <section class="view hidden" id="view-ajustes">
+        <header class="view-header">
+          <div>
+            <h1>Ajustes</h1>
+            <p class="muted">Credenciales de Google, carpetas y valores por defecto.</p>
+          </div>
+        </header>
+        <form id="settings-form" class="panel form"></form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Editor lateral -->
+  <div class="drawer-backdrop hidden" id="drawer-backdrop"></div>
+  <aside class="drawer hidden" id="drawer"></aside>
+
+  <!-- Modal genérico -->
+  <div class="modal-backdrop hidden" id="modal-backdrop">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <div class="drop-overlay hidden" id="drop-overlay"><div>⬇ Soltá los videos para subirlos</div></div>
+  <div class="uploads hidden" id="uploads"></div>
+  <div id="toasts"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

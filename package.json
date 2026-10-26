@@ -1,0 +1,20 @@
+{
+  "name": "autopublisher",
+  "version": "1.0.0",
+  "description": "Dashboard local para programar y publicar videos en YouTube de forma masiva",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "generar": "node agentes/director.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "express": "^4.21.2",
+    "googleapis": "^144.0.0",
+    "multer": "^2.0.2"
+  }
+}

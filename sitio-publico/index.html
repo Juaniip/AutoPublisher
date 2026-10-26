@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPublisher</title>
+  <meta name="description" content="Herramienta personal para programar la publicación de videos en canales de YouTube propios." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="logo">▶</span>AutoPublisher</a>
+    <nav>
+      <a href="index.html" aria-current="page">Inicio</a>
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="terminos.html">Términos del servicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>AutoPublisher</h1>
+    <div class="hero-badge"><a class="yt-badge" href="https://www.youtube.com" target="_blank" rel="noopener"><picture><source srcset="developed-with-youtube-sentence-case-light.png" media="(prefers-color-scheme: dark)"><img src="developed-with-youtube-sentence-case-dark.png" alt="Developed with YouTube" width="210" height="75"></picture></a></div>
+    <p class="lead">Herramienta personal para organizar, programar y publicar videos en mis propios canales de YouTube.</p>
+
+    <div class="note">
+      AutoPublisher es una aplicación de <strong>uso interno y privado</strong> desarrollada por Juan Ignacio Wilt.
+      No es un servicio público: no se ofrece a terceros, no tiene registro de usuarios y no se cobra.
+      Se ejecuta localmente en el equipo de su autor y solo publica en canales de YouTube de su propiedad.
+    </div>
+
+    <h2>Qué hace</h2>
+    <div class="cards">
+      <div class="card"><strong>Detecta videos nuevos</strong><p>Vigila una carpeta local y muestra cada video nuevo en un panel web local.</p></div>
+      <div class="card"><strong>Completa los datos</strong><p>Título, descripción, etiquetas, categoría, miniatura, playlist y visibilidad.</p></div>
+      <div class="card"><strong>Programa la publicación</strong><p>Usa la programación nativa de YouTube (<code>publishAt</code>) para publicar en la fecha elegida.</p></div>
+      <div class="card"><strong>Varios canales propios</strong><p>Cada canal se autoriza por separado con OAuth 2.0 de Google.</p></div>
+    </div>
+
+    <h2>Uso de los Servicios de API de YouTube</h2>
+    <p>AutoPublisher utiliza los <a href="https://developers.google.com/youtube" target="_blank" rel="noopener">Servicios de API de YouTube</a>
+      (YouTube Data API v3) únicamente para las siguientes operaciones sobre los canales del autor:</p>
+    <table>
+      <tr><th>Operación</th><th>Para qué se usa</th></tr>
+      <tr><td><code>channels.list</code></td><td>Identificar el canal autorizado (nombre e imagen) para mostrarlo en el panel.</td></tr>
+      <tr><td><code>videos.insert</code></td><td>Subir el video con su título, descripción, etiquetas, categoría y fecha de publicación.</td></tr>
+      <tr><td><code>thumbnails.set</code></td><td>Aplicar la miniatura personalizada elegida.</td></tr>
+      <tr><td><code>playlists.list</code> / <code>playlistItems.insert</code></td><td>Elegir una playlist propia y agregar el video a ella.</td></tr>
+      <tr><td><code>playlists.insert</code></td><td>Crear una playlist nueva en el propio canal (título, descripción, idioma y visibilidad).</td></tr>
+      <tr><td><code>playlistItems.list</code> / <code>videos.list</code></td><td>Leer la lista de videos del propio canal (título, miniatura, estado y fecha) para mostrarlos en un calendario de publicaciones.</td></tr>
+    </table>
+    <p>No descarga, copia, analiza ni redistribuye contenido de YouTube, y no accede a datos de otros usuarios o canales.</p>
+
+    <h2>Canales donde se usa</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/@LasAventurasDePoloYSusAmigos" target="_blank" rel="noopener">Las Aventuras de Polo y sus Amigos</a></li>
+      <li><a href="https://www.youtube.com/@AMiManeraConJuani" target="_blank" rel="noopener">A Mi Manera con Juani</a></li>
+    </ul>
+
+    <h2>Contacto</h2>
+    <p>Juan Ignacio Wilt — <a href="mailto:juaniwilt@gmail.com">juaniwilt@gmail.com</a></p>
+  </main>
+
+  <footer>
+    <a class="yt-badge" href="https://www.youtube.com" target="_blank" rel="noopener"><picture><source srcset="developed-with-youtube-sentence-case-light.png" media="(prefers-color-scheme: dark)"><img src="developed-with-youtube-sentence-case-dark.png" alt="Developed with YouTube" width="210" height="75"></picture></a>
+    <span>© 2026 Juan Ignacio Wilt · AutoPublisher</span>
+    <span><a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a></span>
+  </footer>
+</body>
+</html>

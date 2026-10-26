@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPublisher · Iniciar sesión</title>
+  <style>
+    :root { --bg: #0b0d12; --panel: #12151c; --panel-2: #181c25; --border: #252a36; --text: #e8eaf0; --muted: #8b91a1; --accent: #ff3b5c; --accent-2: #ff6a3d; --red: #ff4d4f; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: radial-gradient(90% 70% at 15% 0%, rgba(255,59,92,.16), transparent 60%), radial-gradient(80% 60% at 100% 100%, rgba(76,141,255,.12), transparent 60%), var(--bg);
+      color: var(--text); font: 15px/1.45 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; display: grid; place-items: center; min-height: 100vh; padding: 16px; }
+    .box { width: min(400px, 100%); background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+    .brand { display: flex; gap: 12px; align-items: center; margin-bottom: 22px; }
+    .logo { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: #fff; font-size: 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .name { font-weight: 700; font-size: 18px; } .sub { color: var(--muted); font-size: 12px; }
+    h1 { font-size: 20px; margin: 0 0 4px; } p { color: var(--muted); margin: 0 0 18px; font-size: 14px; }
+    label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin: 12px 0 6px; }
+    input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 11px 12px; border-radius: 10px; font: inherit; outline: none; }
+    input:focus { border-color: #4c8dff; }
+    button { width: 100%; margin-top: 20px; border: none; border-radius: 10px; padding: 12px; font: inherit; font-weight: 600; color: #fff; cursor: pointer; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    button:disabled { opacity: .6; cursor: wait; }
+    .error { display: none; margin-top: 14px; color: var(--red); background: rgba(255,77,79,.08); border: 1px solid rgba(255,77,79,.35); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+    .hint { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  </style>
+</head>
+<body data-setup="__SETUP__">
+  <form class="box" id="form" autocomplete="on">
+    <div class="brand"><div class="logo">▶</div><div><div class="name">AutoPublisher</div><div class="sub">YouTube en piloto automático</div></div></div>
+    <h1 id="title">Iniciar sesión</h1>
+    <p id="subtitle">Ingresá con tu usuario y contraseña.</p>
+    <label for="user">Usuario</label>
+    <input id="user" name="username" autocomplete="username" required autofocus />
+    <label for="pass">Contraseña</label>
+    <input id="pass" name="password" type="password" autocomplete="current-password" required />
+    <div id="setup-extra" hidden>
+      <div class="hint">Mínimo 10 caracteres. Guardala en un lugar seguro: no se puede recuperar.</div>
+      <label for="pass2">Repetir contraseña</label>
+      <input id="pass2" type="password" autocomplete="new-password" />
+    </div>
+    <button id="go" type="submit">Entrar</button>
+    <div class="error" id="error"></div>
+  </form>
+  <script src="/login.js"></script>
+</body>
+</html>

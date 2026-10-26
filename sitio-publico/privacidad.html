@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Política de privacidad</title>
+  <meta name="description" content="Política de privacidad de AutoPublisher." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="logo">▶</span>AutoPublisher</a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="privacidad.html" aria-current="page">Política de privacidad</a>
+      <a href="terminos.html">Términos del servicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Política de privacidad</h1>
+    <p class="muted">Última actualización: 9 de octubre de 2026</p>
+
+    <p>Esta política describe cómo AutoPublisher (“la aplicación”), desarrollada y operada por Juan Ignacio Wilt
+      (“el responsable”), accede, usa, almacena y protege la información cuando se conecta a cuentas de YouTube.</p>
+
+    <h2>1. Uso de los Servicios de API de YouTube</h2>
+    <p>La aplicación utiliza los Servicios de API de YouTube. Al usarla, también se aplican los
+      <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">Términos del Servicio de YouTube</a> y la
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>
+      (<a href="http://www.google.com/policies/privacy" target="_blank" rel="noopener">http://www.google.com/policies/privacy</a>).</p>
+
+    <h2>2. Quién usa la aplicación</h2>
+    <p>AutoPublisher es una herramienta privada de uso personal. Solo la usa el responsable, para gestionar canales de YouTube
+      de su propiedad. No está abierta al público ni tiene registro de usuarios.</p>
+
+    <h2>3. Información a la que se accede y que se almacena</h2>
+    <p>Cuando se autoriza un canal mediante OAuth 2.0 de Google, la aplicación accede a la siguiente información:</p>
+    <table>
+      <tr><th>Dato</th><th>Uso</th><th>Dónde se guarda</th></tr>
+      <tr><td>Tokens de acceso y de actualización de OAuth</td><td>Subir y programar videos en el canal autorizado.</td><td>Base de datos local en el equipo del responsable.</td></tr>
+      <tr><td>ID, nombre e imagen del canal</td><td>Mostrar qué canal está conectado en el panel.</td><td>Base de datos local.</td></tr>
+      <tr><td>Lista de videos del propio canal (título, miniatura, estado y fecha de publicación)</td><td>Mostrar un calendario de lo publicado y programado.</td><td>Solo en memoria, se renueva al abrir el calendario (máx. 5 minutos).</td></tr>
+      <tr><td>Conexión opcional con Google Drive (tokens OAuth, email de la cuenta y carpeta elegida)</td><td>Guardar en el Drive del propio usuario una copia de cada video publicado y una ficha con sus datos.</td><td>Base de datos local; los archivos quedan en el Drive del usuario.</td></tr>
+      <tr><td>ID de los videos subidos e ID de playlists propias</td><td>Mostrar el estado de cada publicación y agregar videos a playlists.</td><td>Base de datos local.</td></tr>
+    </table>
+    <p>Si el usuario conecta Google Drive, se solicita además <code>drive.file</code>: la aplicación solo puede ver y crear los archivos
+      y carpetas que ella misma crea o que el usuario elige explícitamente en la ventana de selección de Google; no accede al resto del Drive.</p>
+    <p>Los permisos (scopes) solicitados para YouTube son <code>youtube.upload</code> y <code>youtube</code>, usados solo para las operaciones
+      descritas en la <a href="index.html">página principal</a>. La aplicación no accede a datos de otros usuarios,
+      no lee comentarios ni mensajes y no recopila estadísticas de audiencia.</p>
+
+    <h2>4. Cómo se usa la información</h2>
+    <p>La información se usa exclusivamente para subir videos, aplicar sus metadatos (título, descripción, etiquetas, categoría,
+      miniatura, playlist, visibilidad y fecha de publicación) y mostrar el estado de cada publicación al responsable.</p>
+
+    <h2>5. Cómo se comparte la información</h2>
+    <p>La información <strong>no se vende, no se alquila y no se comparte con terceros</strong>. Solo se envía a Google/YouTube
+      a través de sus APIs oficiales, para realizar las operaciones solicitadas.</p>
+
+    <h2>6. Cookies y tecnologías similares</h2>
+    <p>Este sitio web no utiliza cookies de seguimiento ni herramientas de analítica. La aplicación no coloca cookies
+      en los dispositivos de terceros ni accede a información almacenada en ellos.</p>
+
+    <h2>7. Almacenamiento y seguridad</h2>
+    <p>Los datos se guardan únicamente en el equipo del responsable, en una base de datos local. La aplicación solo acepta
+      conexiones desde ese mismo equipo (127.0.0.1) y no está expuesta a internet. Los datos obtenidos de la API se
+      conservan solo mientras el canal siga conectado y se tratan de acuerdo con las Políticas para Desarrolladores
+      de la API de YouTube.</p>
+
+    <h2>8. Cómo revocar el acceso y eliminar datos</h2>
+    <ul>
+      <li>El acceso de la aplicación a una cuenta de Google se puede revocar en cualquier momento desde la página de
+        configuración de seguridad de Google:
+        <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">https://security.google.com/settings/security/permissions</a>.</li>
+      <li>Al desconectar un canal desde la aplicación, se eliminan de inmediato sus tokens y sus datos almacenados.</li>
+      <li>Si el acceso se revoca desde Google, los tokens guardados dejan de funcionar de inmediato y el canal puede
+        eliminarse desde el panel de la aplicación.</li>
+      <li>Para pedir la eliminación de cualquier dato, escribí a <a href="mailto:juaniwilt@gmail.com">juaniwilt@gmail.com</a>.
+        La solicitud se atiende dentro de los 30 días.</li>
+    </ul>
+
+    <h2>9. Cambios a esta política</h2>
+    <p>Cualquier cambio se publicará en esta página con una nueva fecha de actualización.</p>
+
+    <h2>10. Contacto</h2>
+    <p>Juan Ignacio Wilt — <a href="mailto:juaniwilt@gmail.com">juaniwilt@gmail.com</a> — Argentina</p>
+  </main>
+
+  <footer>
+    <a class="yt-badge" href="https://www.youtube.com" target="_blank" rel="noopener"><picture><source srcset="developed-with-youtube-sentence-case-light.png" media="(prefers-color-scheme: dark)"><img src="developed-with-youtube-sentence-case-dark.png" alt="Developed with YouTube" width="210" height="75"></picture></a>
+    <span>© 2026 Juan Ignacio Wilt · AutoPublisher</span>
+    <span><a href="index.html">Inicio</a> · <a href="terminos.html">Términos</a></span>
+  </footer>
+</body>
+</html>

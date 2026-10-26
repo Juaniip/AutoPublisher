@@ -1,0 +1,40 @@
+# AutoPublisher en la Raspberry Pi.
+# Los puertos se publican solo en 127.0.0.1: desde afuera se entra únicamente por el túnel de Cloudflare.
+services:
+  app:
+    build: .
+    container_name: autopublisher
+    restart: unless-stopped
+    # Seguridad: usuario sin privilegios (uid 1000 = node), sin capabilities, sin escalar privilegios
+    # y sistema de archivos de solo lectura salvo las carpetas de datos montadas abajo.
+    user: "1000:1000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      TZ: America/Argentina/Buenos_Aires
+      HOME: /tmp
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./data:/app/data            # base de datos, tokens y ajustes
+      - ./publicar:/app/publicar    # videos subidos desde el panel
+      - ./publicados:/app/publicados
+      - ./guiones:/app/guiones
+      - ./agentes:/app/agentes      # plantillas de los agentes (editables desde el panel)
+
+  # Sitio público (página principal, privacidad y términos) para la auditoría de YouTube
+  sitio:
+    image: nginx:alpine
+    container_name: autopublisher-web
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ../autopublisher-web:/usr/share/nginx/html:ro
